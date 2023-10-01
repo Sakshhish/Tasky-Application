@@ -99,3 +99,42 @@ const handleSubmit = () =>{
     state.taskList.push({...input, id});
     updateLocalStorage();
 }
+
+// Opening modal from the cards
+const openTask = (e) => {
+    if(!e) e = window.event;
+    
+    //console.log("event" , e);
+
+    const getTask = state.taskList.find(({id}) => id === e.target.id);
+     taskModal.innerHTML= htmlModalContent(getTask)
+}
+
+
+
+// CRUD => Delete Operation
+const deleteTask = (e) => {
+    if(!e) e = window.event;
+    const targetID = e.target.getAttribute("name");
+    // console.log(e.target);
+    const type = e.target.tagName;
+    console.log(type);
+    const removeTask = state.taskList.filter(({id}) => id !== targetID);
+    // console.log(removeTask);
+    state.taskList = removeTask;
+    
+    console.log("updated arr", state.taskList);
+
+    updateLocalStorage();
+    // I was 
+    if(type === "BUTTON"){
+        // console.log(e.target.parentNode.parentNode.parentNode);
+        return e.target.parentNode.parentNode.parentNode.parentNode.removeChild(
+            e.target.parentNode.parentNode.parentNode
+        );
+    }else if(type==="I"){
+    return e.target.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(
+            e.target.parentNode.parentNode.parentNode.parentNode
+        );
+        }
+    }
