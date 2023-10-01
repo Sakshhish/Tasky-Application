@@ -75,8 +75,27 @@ const loadInitialData = () => {
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
 
 
- state.taskList.map((cardDate) => {
-    taskContents.insertAdjacentHTML()
- })
- 
+state.taskList.map((cardDate) => {
+    taskContents.insertAdjacentHTML();
+ }) 
 };
+
+const handleSubmit = () =>{
+    const id = `${Date.now()}`
+    const input = {
+        url: document.getElementById('imageUrl').value,
+        title: document.getElementById('taskTitle').value,
+        description: document.getElementById('taskDescription').value,
+        type: document.getElementById('tags').value,
+    };
+
+    if(input.title === '' || input.description=== '' || input.type===''){
+        return alert("Please fill out the all the necessary fileds!");
+    }
+    taskContents.insertAdjacentHTML(
+        "beforeend", htmlTaskContent({...input, id, })
+    );
+
+    state.taskList.push({...input, id});
+    updateLocalStorage();
+}
