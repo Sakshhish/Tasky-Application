@@ -1,30 +1,44 @@
-*{
+* {
     padding: 0;
     margin: 0;
-}
-
-body{
+  }
+  
+  /* Set background color for the body */
+  body {
     background-color: #ebf2ff !important;
-}
-
-.add__new__btn__mobile__only{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    padding: 15px 10px;
-    background-color: white;
-    width: 100%;
-    /* z-index: 2; */
-}
-
-/* media queires */
-@media (min-width: 768px){
-    .add__new__btn__mobile__only{
-        display: none;
+  }
+  
+  /* Desktop Add New Item Button */
+  .add__new__btn__desktop {
+    /* Add your desktop-specific styles here */
+    background-color: #28a745; /* Change the background color */
+    color: white; /* Change the text color */
+    border: none; /* Remove the border */
+    padding: 10px 20px; /* Adjust the padding */
+  }
+  
+  /* Media query for screens less than or equal to 768px */
+  @media (max-width: 768px) {
+    /* Hide the desktop button on smaller screens */
+    .add__new__btn__desktop {
+      display: none;
     }
-}
-
-
-/* .btn__custom{
-    color: blueviolet !important;
-} */
+  
+    /* Show the mobile button on smaller screens */
+    .add__new__btn__mobile {
+      display: block;
+      /* Add styles specific to the mobile button here */
+      background-color: #007bff; /* Change the background color */
+      color: white; /* Change the text color */
+      border: none; /* Remove the border */
+      padding: 10px 20px; /* Adjust the padding */
+    }
+  }
+/* Media query for screens less than or equal to 768px */
+@media (max-width: 768px) {
+    /* Hide the "Add New Task" button on smaller screens */
+    button[data-bs-target="#addNewModal"] {
+      display: none;
+    }
+  }
+  
